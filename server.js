@@ -209,65 +209,6 @@ app.post('/api/allocate-funds', (req, res) => {
     }
 });
 
-// 分配资金的接口
-// app.post('/api/allocate-funds', (req, res) => {
-//     try {
-//         // 获取所有用户
-//         const users = userManager.getAllUsers(); // 假设有一个方法可以获取所有用户
-
-//         if (!users || users.length === 0) {
-//             return res.status(404).json({ error: 'No users found.' });
-//         }
-
-//         // 初始化响应结果
-//         const allocationResults = [];
-
-//         // 为每个用户计算资金分配
-//         users.forEach(user => {
-//             const deposits = depositPlanManager.getDepositsByUser (user.id); // 获取用户的存款记录
-
-//             if (!deposits || deposits.length === 0) {
-//                 allocationResults.push({
-//                     user: user.id,
-//                     message: 'No deposits found for the user.',
-//                     allocationResult: {}
-//                 });
-//                 return;
-//             }
-
-//             // 资金分配逻辑
-//             const allocationResult = depositPlanManager.allocateFunds(deposits); // 根据存款记录分配资金
-
-//             // 构建用户的分配结果
-//             allocationResults.push({
-//                 user: user.id,
-//                 message: 'Funds allocated successfully',
-//                 allocationResult: {
-//                     "High risk": {
-//                         "id": 1,
-//                         "type": "equity",
-//                         "description": "High risk portfolio",
-//                         "riskLevel": "high",
-//                         "allocatedAmount": allocationResult.highRiskAllocatedAmount // 使用实际分配的金额
-//                     },
-//                     "Retirement": {
-//                         "id": 2,
-//                         "type": "bonds",
-//                         "description": "Retirement portfolio",
-//                         "riskLevel": "low",
-//                         "allocatedAmount": allocationResult.retirementAllocatedAmount // 使用实际分配的金额
-//                     }
-//                 }
-//             });
-//         });
-
-//         // 返回所有用户的分配结果
-//         res.status(200).json(allocationResults);
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// });
-
 // 启动服务器
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
